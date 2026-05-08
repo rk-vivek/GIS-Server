@@ -8,7 +8,7 @@ const solveRouter = require("./routes/solve");
 const app  = express();
 const PORT = process.env.PORT || 5000;
 const allowedOrigins = [
-    "https://osint-client.vercel.app",
+    "https://gis-client-vercel.vercel.app/",
     "http://localhost:5173", 
     
     process.env.FRONTEND_URL?.replace(/\/$/, "")
