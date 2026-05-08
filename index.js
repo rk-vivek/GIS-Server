@@ -7,9 +7,19 @@ const solveRouter = require("./routes/solve");
 
 const app  = express();
 const PORT = process.env.PORT || 5000;
-
+const allowedOrigins = [
+    "https://osint-client.vercel.app",
+    "http://localhost:5173", 
+    
+    process.env.FRONTEND_URL?.replace(/\/$/, "")
+].filter(Boolean);
 // ── Middleware ──────────────────────────────────────────────────────────────
-app.use(cors());
+app.use(cors({
+    origin: allowedOrigins,
+    credentials: true,
+    methods: ["GET", "POST"],
+    allowedHeaders: ["Content-Type", "Authorization", "Cookie"]
+}));
 app.use(express.json());
 
 // ── API Routes ──────────────────────────────────────────────────────────────
